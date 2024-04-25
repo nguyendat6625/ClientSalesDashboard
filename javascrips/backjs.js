@@ -12,45 +12,60 @@ function formatCurrency(input) {
        input.value = formattedValue.split('').reverse().join('');
      }
      
-function alertshow(){
-       Swal.fire({
-              position: "top",
-              icon: "success",
-              title: "Thêm thông tin thành công",
-              showConfirmButton: false,
-              timer: 2500
-            });
-}
 
-// const productname = document.getElementById("product-name");
-// const quantity = document.getElementById("quantity");
-// const age = document.getElementById("age");
-// const price = document.getElementById("price");
-
-// submit.addEventListener("click",() =>{
-// if (productname.value && quantity.value && age.value && price.value){
-//        const data = {
-//               productname: productname.value,
-//               age:age.value,
-//               quantity: quantity.value,
-//               price: price.value
-//        };
-//        postData(data);
-// }else{
-//        alert("Chưa đủ thông tin.")
-// }
-// async function postData(data){
-//        const formData = new FormData();
-//        formData.append("entry.1849378674",data.name);
-//        formData.append("entry.1103898366",data.email);
-//        formData.append("entry.1089764332",data.password);
-//        formData.append("entry.1089764332",data.password);
-//        fetch("https://docs.google.com/forms/d/e/1FAIpQLScUy230l4WcOJlC5Zkgge1UYYX7bP9RgBboCxyZ-hJtdWQPow/formResponse",{
-//               method: "POST",
-//               body: formData,
-//               mode:"no-cors"
-//        })
-// }
-// });
-
-
+     const curtomername = document.getElementById("curtomer")
+     const productname = document.getElementById("product-name");
+     const quantity = document.getElementById("quantity");
+     const age = document.getElementById("age");
+     const price = document.getElementById("price");
+     const gender = document.getElementById("gender");
+     const submit = document.getElementById("submit");  // Assuming the button has an id="submit"
+     
+     submit.addEventListener("click", async () => {
+         if (productname.value && quantity.value && age.value && price.value && curtomername.value) {
+             function alertshow() {
+                 Swal.fire({
+                     position: "top",
+                     icon: "success",
+                     title: "Thêm thông tin thành công",
+                     showConfirmButton: false,
+                     timer: 2500
+                 });
+             }
+     
+             const data = {
+                     curtomername:curtomername.value,
+                     productname: productname.value,
+                     quantity: quantity.value,
+                     price: price.value,
+                     age: age.value,
+                     gender:gender.value
+             };
+     
+             await postData(data);  // Call postData and await its completion before showing the alert
+             alertshow();  // Show success alert after data is posted
+         } else {
+             alert("Chưa đủ thông tin.");
+         }
+     });
+     
+     async function postData(data) {
+         const formData = new FormData();
+         formData.append("entry.940897630", data.curtomername);
+         formData.append("entry.1057344757", data.productname);
+         formData.append("entry.555358468", data.quantity);
+         formData.append("entry.950744414", data.price);  // Assuming you have the correct entry number for the price field
+         formData.append("entry.1829443234", data.age);
+         formData.append("entry.345603231", data.gender);
+     
+         try {
+             await fetch("https://docs.google.com/forms/d/e/1FAIpQLScu1uRJPiVcJqZepagGEsYnUeLnFnC3zW8wIxpgzidNTo-zmA/formResponse", {
+                 method: "POST",
+                 body: formData,
+                 mode: "no-cors"
+             });
+         } catch (error) {
+             console.error('Error posting data: ', error);
+         }
+     }
+     
