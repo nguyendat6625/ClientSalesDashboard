@@ -5,7 +5,7 @@ body {
 
        font-family: Arial, sans-serif;
        padding: 20px;
-       background-image: url(../img/background.jpg);
+       background-image: url(../img/bgcimg.jpg);
        background-size: cover;
        background-repeat: no-repeat;
 }
@@ -23,6 +23,7 @@ select {
        display: flex;
        justify-content: center;
 }
+
 .form-container {
        height: 25em;
        border-radius: 5em;
@@ -31,11 +32,58 @@ select {
        padding: 20px;
        border: 1px solid #ccc;
        box-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
-       background-color: rgba(255, 255, 255, 0.1);
+       background-color: rgba(65, 61, 61, 0.1);
        
    }
+.form-container {
+       position: relative;
+       width: 25em;
+       height: 25em;
+       display: flex;
+       flex-direction: column;
+       justify-content: end;
+       padding: 12px;
+       gap: 12px;
+       border-radius: 8px;
+       cursor: pointer;
+       color: white;
+     }
+     
+.form-container::before {
+       content: '';
+       position: absolute;
+       inset: 0;
+       left: -5px;
+       margin: auto;
+       width: 25em;
+       height: 25em;
+       border-radius: 10px;
+       background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+       z-index: -10;
+       pointer-events: none;
+       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+     }
+     
+.form-container::after {
+       content: "";
+       z-index: -1;
+       position: absolute;
+       inset: 0;
+       background: linear-gradient(-45deg, #de4be0 0%, #37dadd 100% );
+       transform: translate3d(0, 0, 0) scale(0.95);
+       filter: blur(30px);
+     }
+.form-container:hover::after {
+       filter: blur(30px);
+     }
+     
+.form-container:hover::before {
+       transform: rotate(-90deg) scaleX(1.34) scaleY(1.34);
+     }
+     
+     
 .input-group {
- 
+       
        margin-bottom: 15px;
    }
 .input-group label {
@@ -64,8 +112,8 @@ select {
        padding-left: 1em;
        padding-bottom: 0.3em;
        background-color: white;
-       background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 42%, rgba(0,212,255,1) 100%);
+       background: rgb(238,174,202);
+       background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(226,176,206,1) 6%, rgba(224,176,207,1) 19%, rgba(219,176,208,1) 21%, rgba(214,177,210,1) 27%, rgba(206,178,213,1) 36%, rgba(196,180,216,1) 47%, rgba(194,180,217,1) 49%, rgba(189,181,219,1) 54%, rgba(182,182,221,1) 62%, rgba(174,183,224,1) 71%, rgba(170,184,226,1) 76%, rgba(162,185,229,1) 85%, rgba(155,186,231,1) 93%, rgba(148,187,233,1) 100%);
 }
 #submit:hover{
        cursor: pointer;
@@ -83,25 +131,29 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 42%, rgba(
        padding: 5px 10px; /* Thêm padding để tạo không gian cho phần tử select */
        opacity: 0.8px;
        border-radius: 1em;
-       background-color: rgb(255, 255, 255,0.1);
+       background-color: rgb(141, 136, 136,0.4);
+
 
 }
 #curtomer{
        width: 29em;
        border: 1px solid white;
        border-radius: 2em;
-       background-color: rgba(255, 255, 255, 0.1);
+       background-color: rgb(141, 136, 136,0.4);
+
 }
 #quantity{
        width: 20em;
        border-radius: 2em;
-       background-color: rgb(255, 255, 255,0.1);
+       background-color: rgb(141, 136, 136,0.4);
+
 }
 #product-name{
        width: 29em;
        border: 1px solid white;
        border-radius: 2em;
-       background-color: rgba(255, 255, 255, 0.1);
+       background-color: rgb(141, 136, 136,0.4);
+
 }
 #product-name:active{
        border: 1px solid white;
@@ -109,11 +161,14 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 42%, rgba(
 #product-name:hover{
        border: 1px solid aqua;
 }
+#curtomer:hover{
+       border: 1px solid aqua;
+}
 #price{
        width: 30%;
        opacity: 0.7;
        border-radius: 2em;
-       background-color: rgb(255, 255, 255,0.1);
+       background-color: rgb(141, 136, 136,0.4);
 
 
 .gioitinh option {
@@ -122,16 +177,16 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 42%, rgba(
      }
            
 }
-.textage{color: white;}
+.textage{color: black;}
 .textproduct{
-       color: white;
+       color: black;
 }
 .textname{
-       color: white;
+       color: black;
        display: flex;
 }
 .textprice{
-       color: white;
+       color: rgb(0, 0, 0);
 
        margin-left: 13em;
 }
@@ -140,13 +195,11 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 42%, rgba(
        
 }
 .textgender{
-       color: white;
+       color: black;
 
        margin-left: 1.7em;
 }
-input{
-       opacity: 0.7;
-}
+
 input:hover{
        border: 1px solid aqua;
 }
